@@ -12,6 +12,7 @@ services:
      args:
        - CADDY_DOMAIN=${DOMAIN}
        - CADDY_VERSION=${CADDY_VERSION}
+       - V2RAY_PATH=${V2RAY_PATH}
    ports:
      - "${CADDY_HOST_HTTP_PORT}:80"
      - "${CADDY_HOST_HTTPS_PORT}:443"
@@ -24,5 +25,23 @@ services:
      - CLOUDFLARE_EMAIL=${CLOUDFLARE_EMAIL}
      - CLOUDFLARE_API_KEY=${CLOUDFLARE_API_KEY}
    restart: always
+   links:
+     - v2ray
+   networks:
+     - frontend
+  
+ ## V2Ray #################################################
+ v2ray:
+   build:
+     context: ./v2ray
+     args:
+       - V2RAY_BACKEND_UUID=${V2RAY_BACKEND_UUID}
+       - V2RAY_FRONTEND_UUID=${V2RAY_FRONTEND_UUID}
+       - V2RAY_PORT=${V2RAY_PORT}
+       - V2RAY_PATH=${V2RAY_PATH}
+   ports:
+     - "${V2RAY_PORT}:${V2RAY_PORT}"
+   expose:
+     - "8188"
    networks:
      - frontend

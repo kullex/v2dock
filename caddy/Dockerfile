@@ -4,8 +4,16 @@ FROM abiosoft/caddy:${CADDY_VERSION}
 ARG CADDY_DOMAIN
 ENV CADDY_DOMAIN ${CADDY_DOMAIN}
 
-COPY Caddyfile /tmp/Caddyfile
-RUN mkdir /etc/caddy && sed "s#yourdomain#$CADDY_DOMAIN#g" /tmp/Caddyfile > /etc/caddy/Caddyfile
+ARG V2RAY_PATH
+ENV V2RAY_PATH ${V2RAY_PATH}
+
+RUN mkdir /etc/caddy
+COPY Caddyfile /etc/caddy/Caddyfile
+RUN sed -i -e "s#yourdomain#$CADDY_DOMAIN#g" \
+    -e "s#v2ray_path#$V2RAY_PATH#g" \
+    /etc/caddy/Caddyfile
+
+RUN cat /etc/caddy/Caddyfile
 
 CMD ["--conf", "/etc/caddy/Caddyfile", "--log", "stdout", "--agree=true"]
 
