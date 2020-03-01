@@ -194,7 +194,7 @@ sudo docker-compose up -d --build
       "tag": "frontend",
       "streamSettings": {
         "wsSettings": {
-          "path": "你配置的 V2RAY_PATH",
+          "path": "/你配置的 V2RAY_PATH，注意最前面的 '/' 是必须的，不包含在 V2RAY_PATH 里面",
           "headers": {}
         },
         "security": "tls",
