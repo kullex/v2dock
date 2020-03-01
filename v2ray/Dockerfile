@@ -19,5 +19,6 @@ RUN sed -i -e "s#frontend_uuid#$FRONTEND_UUID#g" \
     -e "s#v2ray_path#$V2RAY_PATH#g" \
     /etc/v2ray/config.json
 
-RUN cat /etc/v2ray/config.json
+# RUN cat /etc/v2ray/config.json
+
 EXPOSE 8188 ${V2RAY_PORT}

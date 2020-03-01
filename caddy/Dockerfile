@@ -13,7 +13,7 @@ RUN sed -i -e "s#yourdomain#$CADDY_DOMAIN#g" \
     -e "s#v2ray_path#$V2RAY_PATH#g" \
     /etc/caddy/Caddyfile
 
-RUN cat /etc/caddy/Caddyfile
+# RUN cat /etc/caddy/Caddyfile
 
 CMD ["--conf", "/etc/caddy/Caddyfile", "--log", "stdout", "--agree=true"]
 
