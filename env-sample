@@ -20,3 +20,12 @@ CLOUDFLARE_API_KEY=
 ### DOMAIN ################################################
 
 DOMAIN=
+
+### V2Ray #################################################
+
+V2RAY_PORT=
+
+V2RAY_BACKEND_UUID=
+V2RAY_FRONTEND_UUID=
+
+V2RAY_PATH=
