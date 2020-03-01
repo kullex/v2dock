@@ -1,0 +1,11 @@
+# Docs: https://caddyserver.com/docs/caddyfile
+*.yourdomain {
+    root /var/www/public
+    gzip
+    browse
+    log /var/log/caddy/access.log
+    
+    tls {
+        dns cloudflare
+    }
+}
